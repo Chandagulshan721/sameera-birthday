@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Sameera 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(#0f0f2d, #000);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0.5em 0;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc; }
+      to { text-shadow: 0 0 20px #ff33aa, 0 0 30px #ff33aa; }
+    }
+
+    .photo {
+      width: 300px;
+      height: 300px;
+      background-image: url('photo.jpeg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      border: 5px solid #ff99cc;
+      box-shadow: 0 0 40px #ff66cc;
+      margin: 20px 0;
+      cursor: pointer;
+      animation: heartbeat 2s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .message {
+      max-width: 700px;
+      font-size: 1.2em;
+      line-height: 1.6em;
+      color: #ffc0f0;
+      text-align: left;
+      white-space: pre-line; /* keeps line breaks */
+      border-right: 2px solid #fff;
+      padding: 20px;
+      margin: 20px;
+      min-height: 200px;
+    }
+
+    .final {
+      margin-top: 30px;
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #ffd166;
+      animation: fadeIn 3s ease-in-out forwards, glow 2s infinite alternate;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    audio { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>🎂 Happy Birthday Sameera 🎉</h1>
+  
+  <div class="photo" onclick="playMusic()"></div>
+
+  <!-- Paragraph message will type out -->
+  <div class="message" id="typewriter"></div>
+
+  <div class="final">
+    🌸 You Are My Sunshine 🌸 <br/>
+    💖 Our Relationship is Forever Special 💖
+  </div>
+
+  <!-- Music -->
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function playMusic() {
+      document.getElementById("bg-music").play().catch(()=>{});
+    }
+
+    const text = `🌹 Sameera, I don’t even remember when I became so close to you, but somehow, life brought us together. Every time I ask for something, you are always there — whether it’s sharing food, meeting me in college, or simply being by my side. You are truly a very special person to me. I believe you’ll always be there, and I want to take things slowly, because I think…I love you. ❤️ You’re someone I’ve always admired.      Happy, Happy Birthday Sameera! 🎂✨ I pray that you achieve everything you wish for in life.     Insha’Allah, all your dreams will come true. 🌸💫`;
+
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50); // typing speed (50ms per letter)
+      } else {
+        document.querySelector(".final").style.opacity = 1;
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+
+</body>
+</html>
